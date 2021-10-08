@@ -54,12 +54,12 @@ pub struct MerklePath<
 > where
     MerkleChip: MerkleInstructions<C, PATH_LENGTH, K, MAX_WORDS> + Clone,
 {
-    pub(in crate::circuit) chip_1: MerkleChip,
-    pub(in crate::circuit) chip_2: MerkleChip,
-    pub(in crate::circuit) domain: MerkleChip::HashDomains,
-    pub(in crate::circuit) leaf_pos: Option<u32>,
+    pub chip_1: MerkleChip,
+    pub chip_2: MerkleChip,
+    pub domain: MerkleChip::HashDomains,
+    pub leaf_pos: Option<u32>,
     // The Merkle path is ordered from leaves to root.
-    pub(in crate::circuit) path: Option<[C::Base; PATH_LENGTH]>,
+    pub path: Option<[C::Base; PATH_LENGTH]>,
 }
 
 #[allow(non_snake_case)]
