@@ -26,7 +26,7 @@ pub struct CommitIvkConfig {
 }
 
 impl CommitIvkConfig {
-    pub(in crate::circuit) fn configure(
+    pub fn configure(
         meta: &mut ConstraintSystem<pallas::Base>,
         advices: [Column<Advice>; 10],
         sinsemilla_config: SinsemillaConfig,
@@ -220,7 +220,7 @@ impl CommitIvkConfig {
 
     #[allow(non_snake_case)]
     #[allow(clippy::type_complexity)]
-    pub(in crate::circuit) fn assign_region(
+    pub fn assign_region(
         &self,
         sinsemilla_chip: SinsemillaChip,
         ecc_chip: EccChip,

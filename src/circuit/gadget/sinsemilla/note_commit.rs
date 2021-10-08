@@ -55,7 +55,7 @@ pub struct NoteCommitConfig {
 impl NoteCommitConfig {
     #[allow(non_snake_case)]
     #[allow(clippy::many_single_char_names)]
-    pub(in crate::circuit) fn configure(
+    pub fn configure(
         meta: &mut ConstraintSystem<pallas::Base>,
         advices: [Column<Advice>; 10],
         sinsemilla_config: SinsemillaConfig,
@@ -518,7 +518,7 @@ impl NoteCommitConfig {
     #[allow(clippy::many_single_char_names)]
     #[allow(clippy::type_complexity)]
     #[allow(clippy::too_many_arguments)]
-    pub(in crate::circuit) fn assign_region(
+    pub fn assign_region(
         &self,
         mut layouter: impl Layouter<pallas::Base>,
         chip: SinsemillaChip,

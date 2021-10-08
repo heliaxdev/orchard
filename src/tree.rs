@@ -166,7 +166,7 @@ impl MerkleHashOrchard {
     }
 
     /// Only used in the circuit.
-    pub(crate) fn inner(&self) -> pallas::Base {
+    pub fn inner(&self) -> pallas::Base {
         self.0
     }
 

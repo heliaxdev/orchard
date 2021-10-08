@@ -12,7 +12,7 @@ use crate::{
 
 /// A unique nullifier for a note.
 #[derive(Clone, Copy, Debug)]
-pub struct Nullifier(pub(crate) pallas::Base);
+pub struct Nullifier(pub pallas::Base);
 
 impl Nullifier {
     /// Generates a dummy nullifier for use as $\rho$ in dummy spent notes.

@@ -198,7 +198,7 @@ impl SpendValidatingKey {
 pub struct NullifierDerivingKey(pallas::Base);
 
 impl NullifierDerivingKey {
-    pub(crate) fn inner(&self) -> pallas::Base {
+    pub fn inner(&self) -> pallas::Base {
         self.0
     }
 }
@@ -245,7 +245,7 @@ impl From<&SpendingKey> for CommitIvkRandomness {
 }
 
 impl CommitIvkRandomness {
-    pub(crate) fn inner(&self) -> pallas::Scalar {
+    pub fn inner(&self) -> pallas::Scalar {
         self.0
     }
 
@@ -614,7 +614,7 @@ impl AsRef<[u8; 32]> for OutgoingViewingKey {
 pub struct DiversifiedTransmissionKey(NonIdentityPallasPoint);
 
 impl DiversifiedTransmissionKey {
-    pub(crate) fn inner(&self) -> NonIdentityPallasPoint {
+    pub fn inner(&self) -> NonIdentityPallasPoint {
         self.0
     }
 }

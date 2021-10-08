@@ -16,7 +16,7 @@ use crate::{
 pub struct NoteCommitTrapdoor(pub(super) pallas::Scalar);
 
 impl NoteCommitTrapdoor {
-    pub(crate) fn inner(&self) -> pallas::Scalar {
+    pub fn inner(&self) -> pallas::Scalar {
         self.0
     }
 }
@@ -26,7 +26,7 @@ impl NoteCommitTrapdoor {
 pub struct NoteCommitment(pub(super) pallas::Point);
 
 impl NoteCommitment {
-    pub(crate) fn inner(&self) -> pallas::Point {
+    pub fn inner(&self) -> pallas::Point {
         self.0
     }
 }

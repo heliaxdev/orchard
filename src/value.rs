@@ -166,7 +166,7 @@ impl TryFrom<ValueSum> for i64 {
 pub struct ValueCommitTrapdoor(pallas::Scalar);
 
 impl ValueCommitTrapdoor {
-    pub(crate) fn inner(&self) -> pallas::Scalar {
+    pub fn inner(&self) -> pallas::Scalar {
         self.0
     }
 }
