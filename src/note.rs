@@ -11,10 +11,10 @@ use crate::{
     Address,
 };
 
-pub(crate) mod commitment;
+pub mod commitment;
 pub use self::commitment::{ExtractedNoteCommitment, NoteCommitment};
 
-pub(crate) mod nullifier;
+pub mod nullifier;
 pub use self::nullifier::Nullifier;
 
 /// The ZIP 212 seed randomness for a note.

@@ -13,19 +13,19 @@
 // Catch documentation errors caused by code changes.
 #![deny(broken_intra_doc_links)]
 #![deny(missing_debug_implementations)]
-#![deny(missing_docs)]
+//#![deny(missing_docs)]
 #![deny(unsafe_code)]
 
 mod address;
 pub mod builder;
 pub mod bundle;
 pub mod circuit;
-mod constants;
+pub mod constants;
 pub mod keys;
 pub mod note;
 pub mod note_encryption;
 pub mod primitives;
-mod spec;
+pub mod spec;
 pub mod tree;
 pub mod value;
 pub mod zip32;

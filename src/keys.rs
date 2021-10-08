@@ -195,7 +195,7 @@ impl SpendValidatingKey {
 /// [`Note`]: crate::note::Note
 /// [orchardkeycomponents]: https://zips.z.cash/protocol/nu5.pdf#orchardkeycomponents
 #[derive(Copy, Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
-pub(crate) struct NullifierDerivingKey(pallas::Base);
+pub struct NullifierDerivingKey(pallas::Base);
 
 impl NullifierDerivingKey {
     pub(crate) fn inner(&self) -> pallas::Base {
@@ -236,7 +236,7 @@ impl NullifierDerivingKey {
 ///
 /// [orchardkeycomponents]: https://zips.z.cash/protocol/nu5.pdf#orchardkeycomponents
 #[derive(Copy, Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
-pub(crate) struct CommitIvkRandomness(pallas::Scalar);
+pub struct CommitIvkRandomness(pallas::Scalar);
 
 impl From<&SpendingKey> for CommitIvkRandomness {
     fn from(sk: &SpendingKey) -> Self {
