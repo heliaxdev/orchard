@@ -29,7 +29,7 @@ pub(crate) const T_Q: u128 = 45560315531506369815346746415080538113;
 pub(crate) const T_P: u128 = 45560315531419706090280762371685220353;
 
 /// $\mathsf{MerkleDepth^{Orchard}}$
-pub(crate) const MERKLE_DEPTH_ORCHARD: usize = 32;
+pub const MERKLE_DEPTH_ORCHARD: usize = 32;
 
 /// $\ell^\mathsf{Orchard}_\mathsf{Merkle}$
 pub(crate) const L_ORCHARD_MERKLE: usize = 255;

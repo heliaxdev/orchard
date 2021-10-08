@@ -4,10 +4,10 @@ use ecc::chip::EccChip;
 use poseidon::Pow5T3Chip as PoseidonChip;
 use sinsemilla::{chip::SinsemillaChip, merkle::chip::MerkleChip};
 
-pub(crate) mod ecc;
-pub(crate) mod poseidon;
-pub(crate) mod sinsemilla;
-pub(crate) mod utilities;
+pub mod ecc;
+pub mod poseidon;
+pub mod sinsemilla;
+pub mod utilities;
 
 impl super::Config {
     pub(super) fn ecc_chip(&self) -> EccChip {

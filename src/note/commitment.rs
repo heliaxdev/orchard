@@ -13,7 +13,7 @@ use crate::{
 };
 
 #[derive(Debug)]
-pub(crate) struct NoteCommitTrapdoor(pub(super) pallas::Scalar);
+pub struct NoteCommitTrapdoor(pub(super) pallas::Scalar);
 
 impl NoteCommitTrapdoor {
     pub(crate) fn inner(&self) -> pallas::Scalar {
