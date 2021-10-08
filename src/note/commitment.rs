@@ -88,7 +88,7 @@ impl From<NoteCommitment> for ExtractedNoteCommitment {
 }
 
 impl ExtractedNoteCommitment {
-    pub(crate) fn inner(&self) -> pallas::Base {
+    pub fn inner(&self) -> pallas::Base {
         self.0
     }
 }

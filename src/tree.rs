@@ -55,7 +55,7 @@ impl From<MerkleHashOrchard> for Anchor {
 }
 
 impl Anchor {
-    pub(crate) fn inner(&self) -> pallas::Base {
+    pub fn inner(&self) -> pallas::Base {
         self.0
     }
 }
