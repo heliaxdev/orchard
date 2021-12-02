@@ -422,6 +422,12 @@ di_from!(u32);
 di_from!(u64);
 di_from!(usize);
 
+impl From<[u8; 11]> for DiversifierIndex {
+    fn from(j_bytes: [u8; 11]) -> Self {
+        DiversifierIndex(j_bytes)
+    }
+}
+
 impl DiversifierKey {
     /// Returns the diversifier at index 0.
     pub fn default_diversifier(&self) -> Diversifier {
@@ -544,7 +550,7 @@ impl IncomingViewingKey {
     /// [orchardrawinviewingkeys]: https://zips.z.cash/protocol/protocol.pdf#orchardinviewingkeyencoding
     pub fn to_bytes(&self) -> [u8; 64] {
         let mut result = [0u8; 64];
-        result.copy_from_slice(self.dk.to_bytes());
+        result[..32].copy_from_slice(self.dk.to_bytes());
         result[32..].copy_from_slice(&self.ivk.0.to_bytes());
         result
     }

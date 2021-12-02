@@ -244,7 +244,7 @@ impl plonk::Circuit<pallas::Base> for Circuit {
         // Configuration for the Poseidon hash.
         let poseidon_config = PoseidonChip::configure(
             meta,
-            poseidon::OrchardNullifier,
+            poseidon::P128Pow5T3,
             // We place the state columns after the partial_sbox column so that the
             // pad-and-add region can be layed out more efficiently.
             advices[6..9].try_into().unwrap(),
@@ -499,7 +499,7 @@ impl plonk::Circuit<pallas::Base> for Circuit {
                                 || value.ok_or(plonk::Error::SynthesisError),
                             )?;
                             region.constrain_equal(var, message[i].cell())?;
-                            Ok(Word::<_, _, poseidon::OrchardNullifier, 3, 2>::from_inner(
+                            Ok(Word::<_, _, poseidon::P128Pow5T3, 3, 2>::from_inner(
                                 StateWord::new(var, value),
                             ))
                         };
@@ -805,7 +805,7 @@ impl ProvingKey {
 }
 
 /// Public inputs to the Orchard Action circuit.
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct Instance {
     pub(crate) anchor: Anchor,
     pub(crate) cv_net: ValueCommitment,
@@ -817,6 +817,33 @@ pub struct Instance {
 }
 
 impl Instance {
+    /// Constructs an [`Instance`] from its constituent parts.
+    ///
+    /// This API can be used in combination with [`Proof::verify`] to build verification
+    /// pipelines for many proofs, where you don't want to pass around the full bundle.
+    /// Use [`Bundle::verify_proof`] instead if you have the full bundle.
+    ///
+    /// [`Bundle::verify_proof`]: crate::Bundle::verify_proof
+    pub fn from_parts(
+        anchor: Anchor,
+        cv_net: ValueCommitment,
+        nf_old: Nullifier,
+        rk: VerificationKey<SpendAuth>,
+        cmx: ExtractedNoteCommitment,
+        enable_spend: bool,
+        enable_output: bool,
+    ) -> Self {
+        Instance {
+            anchor,
+            cv_net,
+            nf_old,
+            rk,
+            cmx,
+            enable_spend,
+            enable_output,
+        }
+    }
+
     fn to_halo2_instance(&self) -> [[vesta::Scalar; 9]; 1] {
         let mut instance = [vesta::Scalar::zero(); 9];
 
