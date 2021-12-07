@@ -19,7 +19,7 @@ use crate::{
 };
 
 mod prf_expand;
-pub(crate) use prf_expand::PrfExpand;
+pub use prf_expand::PrfExpand;
 
 /// A Pallas point that is guaranteed to not be the identity.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -54,7 +54,7 @@ impl Deref for NonIdentityPallasPoint {
 
 /// An integer in [1..q_P].
 #[derive(Clone, Copy, Debug)]
-pub(crate) struct NonZeroPallasBase(pallas::Base);
+pub struct NonZeroPallasBase(pallas::Base);
 
 impl Default for NonZeroPallasBase {
     fn default() -> Self {
@@ -147,7 +147,7 @@ impl Deref for NonZeroPallasScalar {
 /// Defined in [Zcash Protocol Spec § 4.2.3: Orchard Key Components][orchardkeycomponents].
 ///
 /// [orchardkeycomponents]: https://zips.z.cash/protocol/nu5.pdf#orchardkeycomponents
-pub(crate) fn to_base(x: [u8; 64]) -> pallas::Base {
+pub fn to_base(x: [u8; 64]) -> pallas::Base {
     pallas::Base::from_bytes_wide(&x)
 }
 
@@ -156,7 +156,7 @@ pub(crate) fn to_base(x: [u8; 64]) -> pallas::Base {
 /// Defined in [Zcash Protocol Spec § 4.2.3: Orchard Key Components][orchardkeycomponents].
 ///
 /// [orchardkeycomponents]: https://zips.z.cash/protocol/nu5.pdf#orchardkeycomponents
-pub(crate) fn to_scalar(x: [u8; 64]) -> pallas::Scalar {
+pub fn to_scalar(x: [u8; 64]) -> pallas::Scalar {
     pallas::Scalar::from_bytes_wide(&x)
 }
 
@@ -164,14 +164,14 @@ pub(crate) fn to_scalar(x: [u8; 64]) -> pallas::Scalar {
 ///
 /// This requires no modular reduction because Pallas' base field is smaller than its
 /// scalar field.
-pub(crate) fn mod_r_p(x: pallas::Base) -> pallas::Scalar {
+pub fn mod_r_p(x: pallas::Base) -> pallas::Scalar {
     pallas::Scalar::from_repr(x.to_repr()).unwrap()
 }
 
 /// Defined in [Zcash Protocol Spec § 4.2.3: Orchard Key Components][orchardkeycomponents].
 ///
 /// [orchardkeycomponents]: https://zips.z.cash/protocol/nu5.pdf#orchardkeycomponents
-pub(crate) fn commit_ivk(
+pub fn commit_ivk(
     ak: &pallas::Base,
     nk: &pallas::Base,
     rivk: &pallas::Scalar,
@@ -198,7 +198,7 @@ pub(crate) fn commit_ivk(
 /// Defined in [Zcash Protocol Spec § 5.4.1.6: DiversifyHash^Sapling and DiversifyHash^Orchard Hash Functions][concretediversifyhash].
 ///
 /// [concretediversifyhash]: https://zips.z.cash/protocol/nu5.pdf#concretediversifyhash
-pub(crate) fn diversify_hash(d: &[u8; 11]) -> NonIdentityPallasPoint {
+pub fn diversify_hash(d: &[u8; 11]) -> NonIdentityPallasPoint {
     let hasher = pallas::Point::hash_to_curve(KEY_DIVERSIFICATION_PERSONALIZATION);
     let pk_d = hasher(d);
     // If the identity occurs, we replace it with a different fixed point.

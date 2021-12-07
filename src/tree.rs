@@ -95,7 +95,7 @@ impl From<(incrementalmerkletree::Position, Vec<MerkleHashOrchard>)> for MerkleP
 
 impl MerklePath {
     /// Generates a dummy Merkle path for use in dummy spent notes.
-    pub(crate) fn dummy(mut rng: &mut impl RngCore) -> Self {
+    pub fn dummy(mut rng: &mut impl RngCore) -> Self {
         MerklePath {
             position: rng.next_u32(),
             auth_path: gen_const_array_with_default(MerkleHashOrchard::empty_leaf(), |_| {
@@ -105,7 +105,7 @@ impl MerklePath {
     }
 
     /// Instantiates a new Merkle path given a leaf position and authentication path.
-    pub(crate) fn new(position: u32, auth_path: [pallas::Base; MERKLE_DEPTH_ORCHARD]) -> Self {
+    pub fn new(position: u32, auth_path: [pallas::Base; MERKLE_DEPTH_ORCHARD]) -> Self {
         Self {
             position,
             auth_path: gen_const_array_with_default(MerkleHashOrchard::empty_leaf(), |i| {
@@ -138,12 +138,12 @@ impl MerklePath {
     }
 
     /// Returns the position of the leaf using this Merkle path.
-    pub(crate) fn position(&self) -> u32 {
+    pub fn position(&self) -> u32 {
         self.position
     }
 
     /// Returns the authentication path.
-    pub(crate) fn auth_path(&self) -> [MerkleHashOrchard; MERKLE_DEPTH_ORCHARD] {
+    pub fn auth_path(&self) -> [MerkleHashOrchard; MERKLE_DEPTH_ORCHARD] {
         self.auth_path
     }
 }
