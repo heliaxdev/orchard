@@ -3,7 +3,7 @@ use blake2b_simd::Params;
 const PRF_EXPAND_PERSONALIZATION: &[u8; 16] = b"Zcash_ExpandSeed";
 
 /// The set of domains in which $PRF^\mathsf{expand}$ is defined.
-pub(crate) enum PrfExpand {
+pub enum PrfExpand {
     Esk,
     Rcm,
     OrchardAsk,
