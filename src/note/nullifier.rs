@@ -46,7 +46,7 @@ impl Nullifier {
     /// Defined in [Zcash Protocol Spec § 4.16: Note Commitments and Nullifiers][commitmentsandnullifiers].
     ///
     /// [commitmentsandnullifiers]: https://zips.z.cash/protocol/nu5.pdf#commitmentsandnullifiers
-    pub(super) fn derive(
+    pub fn derive(
         nk: &NullifierDerivingKey,
         rho: pallas::Base,
         psi: pallas::Base,
