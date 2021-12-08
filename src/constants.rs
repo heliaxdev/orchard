@@ -35,7 +35,7 @@ pub const MERKLE_DEPTH_ORCHARD: usize = 32;
 pub(crate) const L_ORCHARD_MERKLE: usize = 255;
 
 /// $\ell^\mathsf{Orchard}_\mathsf{base}$
-pub(crate) const L_ORCHARD_BASE: usize = 255;
+pub const L_ORCHARD_BASE: usize = 255;
 
 /// $\ell^\mathsf{Orchard}_\mathsf{scalar}$
 pub(crate) const L_ORCHARD_SCALAR: usize = 255;

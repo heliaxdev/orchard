@@ -37,7 +37,7 @@ impl NoteCommitment {
     /// Defined in [Zcash Protocol Spec § 5.4.8.4: Sinsemilla commitments][concretesinsemillacommit].
     ///
     /// [concretesinsemillacommit]: https://zips.z.cash/protocol/nu5.pdf#concretesinsemillacommit
-    pub(super) fn derive(
+    pub fn derive(
         g_d: [u8; 32],
         pk_d: [u8; 32],
         v: NoteValue,

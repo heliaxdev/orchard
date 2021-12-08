@@ -115,11 +115,11 @@ impl ConditionallySelectable for NonZeroPallasScalar {
 }
 
 impl NonZeroPallasScalar {
-    pub(crate) fn from_bytes(bytes: &[u8; 32]) -> CtOption<Self> {
+    pub fn from_bytes(bytes: &[u8; 32]) -> CtOption<Self> {
         pallas::Scalar::from_bytes(bytes).and_then(NonZeroPallasScalar::from_scalar)
     }
 
-    pub(crate) fn from_scalar(s: pallas::Scalar) -> CtOption<Self> {
+    pub fn from_scalar(s: pallas::Scalar) -> CtOption<Self> {
         CtOption::new(NonZeroPallasScalar(s), !s.is_zero())
     }
 
