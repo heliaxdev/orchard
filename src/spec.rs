@@ -94,7 +94,7 @@ impl NonZeroPallasBase {
 
 /// An integer in [1..r_P].
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub(crate) struct NonZeroPallasScalar(pallas::Scalar);
+pub struct NonZeroPallasScalar(pallas::Scalar);
 
 impl Default for NonZeroPallasScalar {
     fn default() -> Self {
@@ -231,7 +231,7 @@ pub(crate) fn ka_orchard(
 /// Defined in [Zcash Protocol Spec § 5.4.9.7: Coordinate Extractor for Pallas][concreteextractorpallas].
 ///
 /// [concreteextractorpallas]: https://zips.z.cash/protocol/nu5.pdf#concreteextractorpallas
-pub(crate) fn extract_p(point: &pallas::Point) -> pallas::Base {
+pub fn extract_p(point: &pallas::Point) -> pallas::Base {
     point
         .to_affine()
         .coordinates()

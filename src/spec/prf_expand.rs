@@ -35,7 +35,7 @@ impl PrfExpand {
     /// Defined in [Zcash Protocol Spec § 5.4.2: Pseudo Random Functions][concreteprfs].
     ///
     /// [concreteprfs]: https://zips.z.cash/protocol/nu5.pdf#concreteprfs
-    pub(crate) fn expand(self, sk: &[u8]) -> [u8; 64] {
+    pub fn expand(self, sk: &[u8]) -> [u8; 64] {
         self.with_ad_slices(sk, &[])
     }
 
@@ -46,7 +46,7 @@ impl PrfExpand {
     /// Defined in [Zcash Protocol Spec § 5.4.2: Pseudo Random Functions][concreteprfs].
     ///
     /// [concreteprfs]: https://zips.z.cash/protocol/nu5.pdf#concreteprfs
-    pub(crate) fn with_ad(self, sk: &[u8], t: &[u8]) -> [u8; 64] {
+    pub fn with_ad(self, sk: &[u8], t: &[u8]) -> [u8; 64] {
         self.with_ad_slices(sk, &[t])
     }
 
@@ -58,7 +58,7 @@ impl PrfExpand {
     /// Defined in [Zcash Protocol Spec § 5.4.2: Pseudo Random Functions][concreteprfs].
     ///
     /// [concreteprfs]: https://zips.z.cash/protocol/nu5.pdf#concreteprfs
-    pub(crate) fn with_ad_slices(self, sk: &[u8], ts: &[&[u8]]) -> [u8; 64] {
+    pub fn with_ad_slices(self, sk: &[u8], ts: &[&[u8]]) -> [u8; 64] {
         let mut h = Params::new()
             .hash_length(64)
             .personal(PRF_EXPAND_PERSONALIZATION)

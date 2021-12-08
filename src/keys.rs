@@ -216,7 +216,7 @@ impl From<&SpendingKey> for NullifierDerivingKey {
 }
 
 impl NullifierDerivingKey {
-    pub(crate) fn prf_nf(&self, rho: pallas::Base) -> pallas::Base {
+    pub fn prf_nf(&self, rho: pallas::Base) -> pallas::Base {
         prf_nf(self.0, rho)
     }
 
@@ -680,7 +680,7 @@ impl ConditionallySelectable for DiversifiedTransmissionKey {
 ///
 /// [concreteorchardkeyagreement]: https://zips.z.cash/protocol/nu5.pdf#concreteorchardkeyagreement
 #[derive(Debug)]
-pub struct EphemeralSecretKey(pub(crate) NonZeroPallasScalar);
+pub struct EphemeralSecretKey(pub NonZeroPallasScalar);
 
 impl ConstantTimeEq for EphemeralSecretKey {
     fn ct_eq(&self, other: &Self) -> subtle::Choice {

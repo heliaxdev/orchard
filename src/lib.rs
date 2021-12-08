@@ -16,7 +16,7 @@
 //#![deny(missing_docs)]
 #![deny(unsafe_code)]
 
-mod address;
+pub mod address;
 pub mod builder;
 pub mod bundle;
 pub mod circuit;

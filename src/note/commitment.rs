@@ -13,7 +13,7 @@ use crate::{
 };
 
 #[derive(Debug)]
-pub struct NoteCommitTrapdoor(pub(super) pallas::Scalar);
+pub struct NoteCommitTrapdoor(pub pallas::Scalar);
 
 impl NoteCommitTrapdoor {
     pub fn inner(&self) -> pallas::Scalar {
@@ -23,7 +23,7 @@ impl NoteCommitTrapdoor {
 
 /// A commitment to a note.
 #[derive(Clone, Debug)]
-pub struct NoteCommitment(pub(super) pallas::Point);
+pub struct NoteCommitment(pub pallas::Point);
 
 impl NoteCommitment {
     pub fn inner(&self) -> pallas::Point {
