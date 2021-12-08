@@ -76,7 +76,7 @@ pub mod testing {
 
     prop_compose! {
         /// Generates an arbitrary payment address.
-        pub(crate) fn arb_address()(sk in arb_spending_key()) -> Address {
+        pub fn arb_address()(sk in arb_spending_key()) -> Address {
             let fvk = FullViewingKey::from(&sk);
             fvk.default_address()
         }
