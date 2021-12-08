@@ -19,7 +19,7 @@ pub use self::nullifier::Nullifier;
 
 /// The ZIP 212 seed randomness for a note.
 #[derive(Copy, Clone, Debug)]
-pub struct RandomSeed([u8; 32]);
+pub struct RandomSeed(pub [u8; 32]);
 
 impl RandomSeed {
     pub fn random(rng: &mut impl RngCore, rho: &Nullifier) -> Self {
