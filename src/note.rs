@@ -19,10 +19,10 @@ pub use self::nullifier::Nullifier;
 
 /// The ZIP 212 seed randomness for a note.
 #[derive(Copy, Clone, Debug)]
-pub(crate) struct RandomSeed([u8; 32]);
+pub struct RandomSeed([u8; 32]);
 
 impl RandomSeed {
-    pub(crate) fn random(rng: &mut impl RngCore, rho: &Nullifier) -> Self {
+    pub fn random(rng: &mut impl RngCore, rho: &Nullifier) -> Self {
         loop {
             let mut bytes = [0; 32];
             rng.fill_bytes(&mut bytes);
@@ -33,20 +33,20 @@ impl RandomSeed {
         }
     }
 
-    pub(crate) fn from_bytes(rseed: [u8; 32], rho: &Nullifier) -> CtOption<Self> {
+    pub fn from_bytes(rseed: [u8; 32], rho: &Nullifier) -> CtOption<Self> {
         let rseed = RandomSeed(rseed);
         let esk = rseed.esk_inner(rho);
         CtOption::new(rseed, esk.is_some())
     }
 
-    pub(crate) fn to_bytes(&self) -> &[u8; 32] {
+    pub fn to_bytes(&self) -> &[u8; 32] {
         &self.0
     }
 
     /// Defined in [Zcash Protocol Spec § 4.7.3: Sending Notes (Orchard)][orchardsend].
     ///
     /// [orchardsend]: https://zips.z.cash/protocol/nu5.pdf#orchardsend
-    pub(crate) fn psi(&self, rho: &Nullifier) -> pallas::Base {
+    pub fn psi(&self, rho: &Nullifier) -> pallas::Base {
         to_base(PrfExpand::Psi.with_ad(&self.0, &rho.to_bytes()[..]))
     }
 
@@ -70,7 +70,7 @@ impl RandomSeed {
     /// Defined in [Zcash Protocol Spec § 4.7.3: Sending Notes (Orchard)][orchardsend].
     ///
     /// [orchardsend]: https://zips.z.cash/protocol/nu5.pdf#orchardsend
-    pub(crate) fn rcm(&self, rho: &Nullifier) -> commitment::NoteCommitTrapdoor {
+    pub fn rcm(&self, rho: &Nullifier) -> commitment::NoteCommitTrapdoor {
         commitment::NoteCommitTrapdoor(to_scalar(
             PrfExpand::Rcm.with_ad(&self.0, &rho.to_bytes()[..]),
         ))
