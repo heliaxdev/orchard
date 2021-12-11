@@ -6,13 +6,8 @@ use halo2::{
 use pasta_curves::arithmetic::FieldExt;
 use std::{array, convert::TryInto, ops::Range};
 
-<<<<<<< Updated upstream
-pub(crate) mod cond_swap;
-pub(crate) mod decompose_running_sum;
-=======
 pub mod cond_swap;
 pub mod decompose_running_sum;
->>>>>>> Stashed changes
 pub mod lookup_range_check;
 
 /// A variable representing a field element.
