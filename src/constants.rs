@@ -38,10 +38,10 @@ pub(crate) const L_ORCHARD_MERKLE: usize = 255;
 pub const L_ORCHARD_BASE: usize = 255;
 
 /// $\ell^\mathsf{Orchard}_\mathsf{scalar}$
-pub(crate) const L_ORCHARD_SCALAR: usize = 255;
+pub const L_ORCHARD_SCALAR: usize = 255;
 
 /// $\ell_\mathsf{value}$
-pub(crate) const L_VALUE: usize = 64;
+pub const L_VALUE: usize = 64;
 
 /// T_PRIME_BITS is the smallest multiple of 10 such that 2^T_PRIME_BITS
 /// is larger than t_P. t_P is defined in q_P = 2^254 + t_P for the
@@ -140,7 +140,7 @@ fn compute_window_table<C: CurveAffine>(base: C, num_windows: usize) -> Vec<[C; 
 
 /// For each window, we interpolate the $x$-coordinate.
 /// Here, we pre-compute and store the coefficients of the interpolation polynomial.
-fn compute_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) -> Vec<[C::Base; H]> {
+pub fn compute_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) -> Vec<[C::Base; H]> {
     // We are interpolating over the 3-bit window, k \in [0..8)
     let points: Vec<_> = (0..H).map(|i| C::Base::from_u64(i as u64)).collect();
 
