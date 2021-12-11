@@ -171,7 +171,10 @@ pub fn compute_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) -> V
 /// bases. The outputs of this function have been stored as constants, and it
 /// is not called anywhere in this codebase. However, we keep this function here
 /// as a utility for those who wish to use it with different parameters.
-fn find_zs_and_us<C: CurveAffine>(base: C, num_windows: usize) -> Option<Vec<(u64, [C::Base; H])>> {
+pub fn find_zs_and_us<C: CurveAffine>(
+    base: C,
+    num_windows: usize,
+) -> Option<Vec<(u64, [C::Base; H])>> {
     // Closure to find z and u's for one window
     let find_z_and_us = |window_points: &[C]| {
         assert_eq!(H, window_points.len());
