@@ -201,7 +201,7 @@ fn find_zs_and_us<C: CurveAffine>(base: C, num_windows: usize) -> Option<Vec<(u6
         .collect()
 }
 
-#[cfg(test)]
+//#[cfg(test)]
 // Test that Lagrange interpolation coefficients reproduce the correct x-coordinate
 // for each fixed-base multiple in each window.
 fn test_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) {
@@ -253,7 +253,7 @@ fn test_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) {
     }
 }
 
-#[cfg(test)]
+//#[cfg(test)]
 // Test that the z-values and u-values satisfy the conditions:
 //      1. z + y = u^2,
 //      2. z - y is not a square
