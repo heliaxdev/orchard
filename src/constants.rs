@@ -204,7 +204,7 @@ fn find_zs_and_us<C: CurveAffine>(base: C, num_windows: usize) -> Option<Vec<(u6
 //#[cfg(test)]
 // Test that Lagrange interpolation coefficients reproduce the correct x-coordinate
 // for each fixed-base multiple in each window.
-fn test_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) {
+pub fn test_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) {
     let lagrange_coeffs = compute_lagrange_coeffs(base, num_windows);
 
     // Check first 84 windows, i.e. `k_0, k_1, ..., k_83`
@@ -258,7 +258,7 @@ fn test_lagrange_coeffs<C: CurveAffine>(base: C, num_windows: usize) {
 //      1. z + y = u^2,
 //      2. z - y is not a square
 // for the y-coordinate of each fixed-base multiple in each window.
-fn test_zs_and_us<C: CurveAffine>(base: C, z: &[u64], u: &[[[u8; 32]; H]], num_windows: usize) {
+pub fn test_zs_and_us<C: CurveAffine>(base: C, z: &[u64], u: &[[[u8; 32]; H]], num_windows: usize) {
     let window_table = compute_window_table(base, num_windows);
 
     for ((u, z), window_points) in u.iter().zip(z.iter()).zip(window_table) {
